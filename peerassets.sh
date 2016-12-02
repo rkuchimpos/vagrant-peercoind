@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env sh
 set -e
 
-sudo apt install -y python3-pip
-pip3 install --upgrade pip
-pip3 install --user -r /tmp/requirements.txt
+sudo apt install -y python-pip
+pip install --user git+git://github.com/peercoinops/peercoin_rpc.git
 
 PEER_ASSETS_DIR=~/peerassets
 mkdir -p $PEER_ASSETS_DIR
@@ -15,12 +14,3 @@ fi
 if [ ! -d $PEER_ASSETS_DIR/op_return ]; then
     git clone https://github.com/PeerAssets/op_return $PEER_ASSETS_DIR/op_return
 fi
-
-if [ ! -d $PEER_ASSETS_DIR/pypeerassets ]; then
-    git clone https://github.com/PeerAssets/pypeerassets $PEER_ASSETS_DIR/pypeerassets
-fi
-
-if [ ! -d $PEER_ASSETS_DIR/docker-peercoind ]; then
-    git clone https://github.com/peerchemist/docker-peercoind $PEER_ASSETS_DIR/docker-peercoind
-fi
-
